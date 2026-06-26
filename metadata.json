@@ -1,0 +1,6 @@
+{
+  "name": "TaskPilot AI",
+  "description": "An AI-powered productivity companion that proactively assists in planning, prioritizing, scheduling, and executing tasks with Google Calendar integration and deadline risk analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

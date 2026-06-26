@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "Task": {
+      "title": "Task",
+      "description": "A productivity task representing something the user needs to accomplish.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "deadline": { "type": "string", "format": "date-time" },
+        "priority": { "type": "string", "enum": ["low", "medium", "high", "urgent"] },
+        "aiPriorityReason": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "completed"] },
+        "durationMinutes": { "type": "integer" },
+        "riskScore": { "type": "number" },
+        "calendarEventId": { "type": "string" },
+        "scheduledStartTime": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "createdAt", "updatedAt", "priority", "status"]
+    },
+    "Schedule": {
+      "title": "Schedule",
+      "description": "An AI-generated schedule plan for a specific date.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "timeSlots": { "type": "array" },
+        "aiSummary": { "type": "string" }
+      },
+      "required": ["id", "userId", "date", "createdAt", "timeSlots"]
+    }
+  },
+  "firestore": {
+    "/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "User's individual tasks."
+    },
+    "/schedules/{scheduleId}": {
+      "schema": "Schedule",
+      "description": "AI-generated daily schedules."
+    }
+  }
+}
